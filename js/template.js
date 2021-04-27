@@ -58,27 +58,25 @@
 	 * });
 	 */
 	Template.prototype.show = function (data) {
-		var i, l;
 		var view = '';
 
-		for (i = 0, l = data.length; i < l; i++) {
+		data.forEach(element => {
 			var template = this.defaultTemplate;
 			var completed = '';
 			var checked = '';
 
-			if (data[i].completed) {
+			if (element.completed) {
 				completed = 'completed';
 				checked = 'checked';
 			}
 
-			template = template.replace('{{id}}', data[i].id);
-			template = template.replace('{{title}}', escape(data[i].title));
+			template = template.replace('{{id}}', element.id);
+			template = template.replace('{{title}}', escape(element.title));
 			template = template.replace('{{completed}}', completed);
 			template = template.replace('{{checked}}', checked);
 
 			view = view + template;
-		}
-
+		});
 		return view;
 	};
 
