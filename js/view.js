@@ -27,6 +27,7 @@
 		this.$newTodo = qs('.new-todo');
 	}
 
+	// Suppression d’un item
 	View.prototype._removeItem = function (id) {
 		var elem = qs('[data-id="' + id + '"]');
 
@@ -35,16 +36,19 @@
 		}
 	};
 
+	// Affiche ou cache le bouton « Clear completed »
 	View.prototype._clearCompletedButton = function (completedCount, visible) {
 		this.$clearCompleted.innerHTML = this.template.clearCompletedButton(completedCount);
 		this.$clearCompleted.style.display = visible ? 'block' : 'none';
 	};
 
+	// Sélectionne le bouton de filtre activé
 	View.prototype._setFilter = function (currentPage) {
 		qs('.filters .selected').className = '';
 		qs('.filters [href="#/' + currentPage + '"]').className = 'selected';
 	};
 
+	// Gère si une tache est terminée ou non.
 	View.prototype._elementComplete = function (id, completed) {
 		var listItem = qs('[data-id="' + id + '"]');
 
@@ -58,6 +62,7 @@
 		qs('input', listItem).checked = completed;
 	};
 
+	// Gère l’édition d’une tache
 	View.prototype._editItem = function (id, title) {
 		var listItem = qs('[data-id="' + id + '"]');
 
@@ -75,6 +80,7 @@
 		input.value = title;
 	};
 
+	// Remet en place la vue d'une tâche lorsqu'elle est terminée
 	View.prototype._editItemDone = function (id, title) {
 		var listItem = qs('[data-id="' + id + '"]');
 
@@ -133,11 +139,13 @@
 		viewCommands[viewCmd]();
 	};
 
+	// Récupère l’id d’une tache
 	View.prototype._itemId = function (element) {
 		var li = $parent(element, 'li');
 		return parseInt(li.dataset.id, 10);
 	};
 
+	// EventListener sur la validation d’une tache
 	View.prototype._bindItemEditDone = function (handler) {
 		var self = this;
 		$delegate(self.$todoList, 'li .edit', 'blur', function () {
@@ -158,6 +166,7 @@
 		});
 	};
 
+	// EventListener sur l’annulation de la modification d’une tache
 	View.prototype._bindItemEditCancel = function (handler) {
 		var self = this;
 		$delegate(self.$todoList, 'li .edit', 'keyup', function (event) {
@@ -170,6 +179,7 @@
 		});
 	};
 
+	// Lien entre les éléments du controller et de la vue
 	View.prototype.bind = function (event, handler) {
 		var self = this;
 		switch (event){

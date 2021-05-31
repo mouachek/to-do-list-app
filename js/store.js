@@ -10,6 +10,7 @@
 	 * @param {function} callback Our fake DB uses callbacks because in
 	 * real life you probably would be making AJAX calls
 	 */
+	// Création d'un nouvel objet s'il n'existe pas dans le localStorage, sinon appel de cet objet
 	function Store(name, callback) {
 		callback = callback || function () {};
 
@@ -39,6 +40,7 @@
 	 *	 // hello: world in their properties
 	 * });
 	 */
+	// Trouve un elm dans le stockage grâce à une requête
 	Store.prototype.find = function (query, callback) {
 		if (!callback) {
 			return;
@@ -61,6 +63,7 @@
 	 *
 	 * @param {function} callback The callback to fire upon retrieving data
 	 */
+	// Récupère toutes les données présentes dans le stockage
 	Store.prototype.findAll = function (callback) {
 		callback = callback || function () {};
 		callback.call(this, JSON.parse(localStorage[this._dbName]).todos);
@@ -74,6 +77,7 @@
 	 * @param {function} callback The callback to fire after saving
 	 * @param {number} id An optional param to enter an ID of an item to update
 	 */
+	// Sauvegarde l'élément dans la base de données
 	Store.prototype.save = function (updateData, callback, id) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
@@ -119,6 +123,7 @@
 	 * @param {number} id The ID of the item you want to remove
 	 * @param {function} callback The callback to fire after saving
 	 */
+	// Supprime un élément de la base de données
 	Store.prototype.remove = function (id, callback) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
@@ -145,6 +150,7 @@
 	 *
 	 * @param {function} callback The callback to fire after dropping the data
 	 */
+	// Efface et réinitialise la base de données
 	Store.prototype.drop = function (callback) {
 		var data = {todos: []};
 		localStorage[this._dbName] = JSON.stringify(data);

@@ -29,6 +29,7 @@
 	 *
 	 * @constructor
 	 */
+	// Création du template par défaut
 	function Template() {
 		this.defaultTemplate
 		=	'<li data-id="{{id}}" class="{{completed}}">'
@@ -57,6 +58,7 @@
 	 *	completed: 0,
 	 * });
 	 */
+	// Récupère le template HTML par défaut et injection de notre todo
 	Template.prototype.show = function (data) {
 		var view = '';
 
@@ -86,6 +88,7 @@
 	 * @param {number} activeTodos The number of active todos.
 	 * @returns {string} String containing the count
 	 */
+	// Affiche le nombre de taches qui ne sont pas terminées
 	Template.prototype.itemCounter = function (activeTodos) {
 		var plural = activeTodos === 1 ? '' : 's';
 
@@ -98,6 +101,7 @@
 	 * @param  {[type]} completedTodos The number of completed todos.
 	 * @returns {string} String containing the count
 	 */
+	// Affiche le bouton "ClearCompleted"
 	Template.prototype.clearCompletedButton = function (completedTodos) {
 		if (completedTodos > 0) {
 			return 'Clear completed';

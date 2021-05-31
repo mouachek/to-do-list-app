@@ -7,6 +7,7 @@
 	 * @constructor
 	 * @param {object} storage A reference to the client side storage class
 	 */
+	// Création d'un nouveau modèle de todo
 	function Model(storage) {
 		this.storage = storage;
 	}
@@ -44,6 +45,7 @@
 	 * //Below will find a model with foo equalling bar and hello equalling world.
 	 * model.read({ foo: 'bar', hello: 'world' });
 	 */
+	// Trouve et retourne un modèle en stockage
 	Model.prototype.read = function (query, callback) {
 		var queryType = typeof query;
 		callback = callback || function () {};
@@ -67,6 +69,7 @@
 	 * @param {object} data The properties to update and their new value
 	 * @param {function} callback The callback to fire when the update is complete.
 	 */
+	// Mise à jour du modèle
 	Model.prototype.update = function (id, data, callback) {
 		this.storage.save(data, callback, id);
 	};
@@ -77,6 +80,7 @@
 	 * @param {number} id The ID of the model to remove
 	 * @param {function} callback The callback to fire when the removal is complete.
 	 */
+	// Supprime un modèle du stockage
 	Model.prototype.remove = function (id, callback) {
 		this.storage.remove(id, callback);
 	};
@@ -86,6 +90,7 @@
 	 *
 	 * @param {function} callback The callback to fire when the storage is wiped.
 	 */
+	// Supprime toutes les données du stockage
 	Model.prototype.removeAll = function (callback) {
 		this.storage.drop(callback);
 	};
@@ -93,6 +98,7 @@
 	/**
 	 * Returns a count of all todos
 	 */
+	// Compte toutes les taches (todos)
 	Model.prototype.getCount = function (callback) {
 		var todos = {
 			active: 0,

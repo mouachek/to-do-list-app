@@ -7,6 +7,7 @@
 	 *
 	 * @param {string} name The name of your new to do list.
 	 */
+	// Création d'une nouvelle todo
 	function Todo(name) {
 		this.storage = new app.Store(name);
 		this.model = new app.Model(this.storage);
@@ -17,6 +18,7 @@
 
 	var todo = new Todo('todos-vanillajs');
 
+	// mise à jour de la vue au chargement
 	function setView() {
 		todo.controller.setView(document.location.hash);
 	}
