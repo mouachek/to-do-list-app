@@ -1,5 +1,12 @@
 # to-do-list-app
 
+## Wiki
+
+### [Audit de performance](https://github.com/mouachek/to-do-list-app/wiki/Audit-de-performance) 
+### [Documentation](https://github.com/mouachek/to-do-list-app/wiki/Documentation) 
+### [Documentation technique](https://github.com/mouachek/to-do-list-app/wiki/Documentation-Technique) 
+
+
 ## Application
 
 <img src="https://zupimages.net/up/21/38/syni.png"  />
